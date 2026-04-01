@@ -46,6 +46,20 @@
       margin-bottom: 3.5rem;
     }
 
+    .site-logo {
+      margin-bottom: 1.25rem;
+    }
+
+    .site-logo img {
+      display: block;
+      margin: 0 auto;
+      max-width: min(280px, 85vw);
+      max-height: 120px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
     h1 {
       font-size: clamp(1.75rem, 4vw, 2.25rem);
       font-weight: 700;
@@ -193,6 +207,9 @@
 <body>
   <div class="page">
     <header>
+      <div class="site-logo">
+        <img src="logo.png" alt="Random Mini Apps">
+      </div>
       <h1>Random Mini Apps</h1>
       <p class="tagline">Handcrafted, individually perfected apps for your Apple devices.</p>
     </header>
