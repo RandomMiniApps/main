@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Mini Apps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f12;
+      --surface: #18181c;
+      --surface-hover: #222228;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --accent: #22d3ee;
+      --accent-dim: rgba(34, 211, 238, 0.15);
+      --border: #27272a;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .site-logo {
+      margin-bottom: 1.25rem;
+    }
+
+    .site-logo img {
+      display: block;
+      margin: 0 auto;
+      max-width: min(280px, 85vw);
+      max-height: 120px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 400;
+    }
+
+    .apps {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .app-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+
+    .app-card:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .app-icon {
+      width: 72px;
+      height: 72px;
+      min-width: 72px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      overflow: hidden;
+    }
+
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .app-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .app-name {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .app-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .app-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .app-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .app-cta::after {
+      content: '→';
+    }
+
+    .app-card--coming-soon {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .app-card--coming-soon:hover {
+      transform: none;
+      border-color: var(--border);
+    }
+
+    .app-cta--soon {
+      color: var(--text-muted);
+    }
+
+    .app-cta--soon::after {
+      content: none;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-contact {
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 560px) {
+      .app-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .app-cta {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="site-logo">
+        <img src="./logo.png" alt="Random Mini Apps">
+      </div>
+      <h1>Random Mini Apps</h1>
+      <p class="tagline">Handcrafted, individually perfected apps for your Apple devices.</p>
+    </header>
+
+    <section class="apps">
+      <a class="app-card" href="https://apps.apple.com/us/app/natural-text/id1323616521" target="_blank" rel="noopener">
+        <div class="app-icon">
+          <img src="natural-text-icon.png" alt="">
+        </div>
+        <div class="app-body">
+          <div class="app-name">Natural Text</div>
+          <p class="app-desc">Encrypt your text to natural text with your secret key—almost impossible to tell if it’s broken. Use in email, SMS, WhatsApp, Telegram and more. Supports 9 languages. Free with optional in‑app purchase for unlimited characters and no ads.</p>
+          <div class="app-meta">iPhone, iPad · Free · In‑App Purchases</div>
+        </div>
+        <span class="app-cta">View on App Store</span>
+      </a>
+
+      <a class="app-card" href="https://apps.apple.com/us/app/msgsecret/id958618403" target="_blank" rel="noopener">
+        <div class="app-icon">
+          <img src="msgsecret-icon.png" alt="">
+        </div>
+        <div class="app-body">
+          <div class="app-name">MsgSecret</div>
+          <p class="app-desc">Encode and decode messages with your own cipher setup—hide what you send from curious eyes. Share ciphered text by email, SMS, Facebook, Twitter, WhatsApp, and more. Save your cipher method and shake your iPhone for a quick encode/decode shortcut. Passcode or Touch ID protection.</p>
+          <div class="app-meta">iPhone · Free</div>
+        </div>
+        <span class="app-cta">View on App Store</span>
+      </a>
+
+      <a class="app-card" href="https://apps.apple.com/us/app/car-hud-display/id6758107542" target="_blank" rel="noopener">
+        <div class="app-icon">
+          <img src="car-hud-icon.png" alt="">
+        </div>
+        <div class="app-body">
+          <div class="app-name">Car HUD Display</div>
+          <p class="app-desc">Turn your iPhone into a professional heads-up display. Real-time GPS speed, 12 widgets (clock, temperature, compass, trip distance, average and max speed, and more), HUD mirror mode for your windshield, and smart brightness. Imperial and metric units. iPhone only.</p>
+          <div class="app-meta">iPhone · $9.99</div>
+        </div>
+        <span class="app-cta">View on App Store</span>
+      </a>
+
+      <a class="app-card" href="https://apps.apple.com/us/app/lighting-check/id1317618609" target="_blank" rel="noopener">
+        <div class="app-icon">
+          <img src="lighting-check-icon.png" alt="">
+        </div>
+        <div class="app-body">
+          <div class="app-name">Lighting Check</div>
+          <p class="app-desc">Check the light intensity in any space using your iPhone’s camera. Correct lighting is crucial for many settings—including cattle farms, where this app provides standards for different locations so you can see how each area compares. Uses the rear camera only for best accuracy; readings depend on your device’s camera quality, so newer iPhones typically give more accurate results.</p>
+          <div class="app-meta">iPhone, iPad · Free · In‑App Purchases</div>
+        </div>
+        <span class="app-cta">View on App Store</span>
+      </a>
+
+      <a class="app-card" href="https://apps.apple.com/us/app/keepie-yuppie/id6758394887" target="_blank" rel="noopener">
+        <div class="app-icon">
+          <img src="keepie-yuppie-icon.png" alt="">
+        </div>
+        <div class="app-body">
+          <div class="app-name">Keepie Yuppie</div>
+          <p class="app-desc">99 levels of ball juggling. Tap to keep the ball airborne with physics-based gameplay, dynamic weather (wind, rain, snow, storm), and obstacles. Kick challenges, survival mode, and target practice. Game Center, regenerating lives, and a Premium option for unlimited lives and no ads.</p>
+          <div class="app-meta">iPhone, iPad · Free · In‑App Purchases</div>
+        </div>
+        <span class="app-cta">View on App Store</span>
+      </a>
+
+      <!-- When ClinSpeak OET is live: replace this block with an <a class="app-card" href="https://apps.apple.com/us/app/.../idAPP_ID"> and a normal app-cta. Verify id via https://itunes.apple.com/lookup?bundleId=random.miniapps.OET -->
+      <div class="app-card app-card--coming-soon" aria-label="ClinSpeak OET">
+        <div class="app-icon">
+          <img src="clinspeek-oet-icon.png" alt="">
+        </div>
+        <div class="app-body">
+          <div class="app-name">ClinSpeak OET</div>
+          <p class="app-desc">OET-style speaking practice for nurses: realistic clinical role plays, timed preparation and recording, transcript replay, and structured feedback on clarity, organisation, empathy, and language. Free to download; unlock the full scenario library and premium features with a subscription. Independent preparation tool—not affiliated with the official OET test.</p>
+          <div class="app-meta">iPhone, iPad · Free · In‑App Purchases</div>
+        </div>
+        <span class="app-cta app-cta--soon">Coming soon on the App Store</span>
+      </div>
+
+      <!-- When Daily Bias is live: replace this block with an <a class="app-card" href="https://apps.apple.com/us/app/.../idAPP_ID"> and a normal app-cta. -->
+      <div class="app-card app-card--coming-soon" aria-label="Daily Bias">
+        <div class="app-icon">
+          <img src="daily-bias-icon.png" alt="Daily Bias icon">
+        </div>
+        <div class="app-body">
+          <div class="app-name">Daily Bias</div>
+          <p class="app-desc">A calm daily ritual for better decisions: learn one cognitive bias per day with a short explanation, a relatable example, and a practical reflection prompt. Free to download, with a one-time purchase to unlock the full bias library and premium features.</p>
+          <div class="app-meta">iPhone, iPad, Apple Watch, Apple TV · Free · One-Time Purchase</div>
+        </div>
+        <span class="app-cta app-cta--soon">Coming soon on the App Store</span>
+      </div>
+    </section>
+
+    <footer>
+      <p class="footer-contact">
+        <strong>Contact</strong><br>
+        For feature requests, app development requests, or promotional code requests:<br>
+        <a href="mailto:bleep.minted4c@icloud.com">bleep.minted4c@icloud.com</a>
+      </p>
+      <p><a href="privacy.html">Privacy Policy</a> · <a href="https://github.com/RandomMiniApps/RandomMiniApps.github.io">GitHub</a> · Built for GitHub Pages</p>
+    </footer>
+  </div>
+</body>
+</html>
