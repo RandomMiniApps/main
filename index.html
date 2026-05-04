@@ -200,23 +200,32 @@
       flex-shrink: 0;
     }
 
-    .product-hunt-btn {
+    .app-card__cta-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       padding: 8px 16px;
-      background: rgb(255, 97, 84);
-      color: #fff;
-      text-decoration: none;
       border-radius: 8px;
       font-size: 0.875rem;
       font-weight: 600;
       white-space: nowrap;
+      text-decoration: none;
       transition: opacity 0.15s, transform 0.15s;
     }
 
-    .product-hunt-btn:hover {
+    .app-card__cta-btn:hover {
       opacity: 0.92;
       transform: translateY(-1px);
+    }
+
+    .app-store-btn {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .product-hunt-btn {
+      background: rgb(255, 97, 84);
+      color: #fff;
     }
 
     @media (max-width: 560px) {
@@ -316,8 +325,8 @@
           <div class="app-meta">iPhone, iPad · Free · In‑App Purchases</div>
         </div>
         <div class="app-card__ctas">
-          <a class="app-cta" href="https://apps.apple.com/us/app/clinspeak-oet/id6763942393" target="_blank" rel="noopener">View on App Store</a>
-          <a class="product-hunt-btn" href="https://www.producthunt.com/products/clinspeakoet?embed=true&amp;utm_source=embed&amp;utm_medium=post_embed" target="_blank" rel="noopener">Check it out on Product Hunt →</a>
+          <a class="app-card__cta-btn app-store-btn" href="https://apps.apple.com/us/app/clinspeak-oet/id6763942393" target="_blank" rel="noopener">View on App Store →</a>
+          <a class="app-card__cta-btn product-hunt-btn" href="https://www.producthunt.com/products/clinspeakoet?embed=true&amp;utm_source=embed&amp;utm_medium=post_embed" target="_blank" rel="noopener">Check it out on Product Hunt →</a>
         </div>
       </div>
 
