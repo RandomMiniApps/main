@@ -10,6 +10,7 @@ Random Mini Apps publishes focused apps for Apple devices, including educational
 
 - [MedViva Coach App Page](https://randomminiapps.github.io/apps/medviva-coach/)
 - [App Store Listing](https://apps.apple.com/us/app/medviva-coach/id6766191800)
+- [Product Hunt Listing](https://www.producthunt.com/products/medviva-coach)
 - [Privacy Policy](https://randomminiapps.github.io/privacy.html)
 - [All Apps](https://randomminiapps.github.io/)
 
