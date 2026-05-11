@@ -1,0 +1,18 @@
+# Random Mini Apps
+
+Random Mini Apps publishes focused apps for Apple devices, including educational and productivity tools.
+
+## Apps
+
+- [MedViva Coach](https://randomminiapps.github.io/apps/medviva-coach/): AI mock interview practice app for A-level students and UK medicine applicants preparing for medical school interviews.
+
+## Important pages
+
+- [MedViva Coach App Page](https://randomminiapps.github.io/apps/medviva-coach/)
+- [App Store Listing](https://apps.apple.com/us/app/medviva-coach/id6766191800)
+- [Privacy Policy](https://randomminiapps.github.io/privacy.html)
+- [All Apps](https://randomminiapps.github.io/)
+
+## Notes
+
+MedViva Coach is an educational practice tool and is not affiliated with UCAS, any medical school, the NHS, or any official admissions body. It does not guarantee interview invitations, offers, or admission outcomes.
