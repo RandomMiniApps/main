@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MsgSecret - Encode and Decode Private Messages on iPhone</title>
+  <meta name="description" content="MsgSecret helps you encode and decode messages with classic cipher methods, then share ciphertext through email, SMS, WhatsApp, social apps and more.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://randomminiapps.github.io/apps/msgsecret/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MsgSecret",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "iOS",
+  "description": "MsgSecret helps you encode and decode messages with classic cipher methods, then share ciphertext through email, SMS, WhatsApp, social apps and more.",
+  "url": "https://randomminiapps.github.io/apps/msgsecret/",
+  "downloadUrl": "https://apps.apple.com/us/app/msgsecret/id958618403",
+  "image": "https://randomminiapps.github.io/msgsecret-icon.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Random Mini Apps",
+    "url": "https://randomminiapps.github.io/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP",
+    "availability": "https://schema.org/InStock",
+    "url": "https://apps.apple.com/us/app/msgsecret/id958618403"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is MsgSecret?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MsgSecret is an app for encoding and decoding messages with classic cipher methods."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I send encoded text through other apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can copy ciphertext from MsgSecret and paste it into email, SMS, chat or social apps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the recipient need MsgSecret?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To decode the message easily, the recipient needs MsgSecret and the same cipher settings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does MsgSecret encrypt on device?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The text transformation happens on device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is MsgSecret free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. MsgSecret is free to use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is MsgSecret a replacement for secure messaging?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It is a cipher and encoding utility, not a full secure messaging system."
+      }
+    }
+  ]
+}
+  </script>
+  <style>
+    :root {
+      --bg: #0f0f12;
+      --surface: #18181c;
+      --surface-hover: #222228;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --accent: #22d3ee;
+      --accent-dim: rgba(34, 211, 238, 0.15);
+      --border: #27272a;
+      --radius: 18px;
+      --radius-sm: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.12), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 4rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .site-nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .site-nav a:hover { text-decoration: underline; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.6rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-lede {
+      color: var(--text);
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      max-width: 720px;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-copy {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.1rem;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 700;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .cta-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .product-hunt-btn {
+      background: rgb(255, 97, 84);
+      color: #fff;
+    }
+
+    .secondary-link {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .secondary-link:hover { text-decoration: underline; }
+
+    .app-visual {
+      background: linear-gradient(145deg, rgba(34, 211, 238, 0.18), rgba(24, 24, 28, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: rgba(0, 0, 0, 0.25) 0 20px 60px;
+      text-align: center;
+    }
+
+    .app-visual img {
+      width: min(220px, 60vw);
+      height: min(220px, 60vw);
+      border-radius: 48px;
+      display: block;
+      margin: 0 auto 1rem;
+      box-shadow: rgba(0, 0, 0, 0.35) 0 18px 45px;
+      object-fit: cover;
+    }
+
+    .app-visual strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .app-visual span {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .section {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: rgba(24, 24, 28, 0.82);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .section h2 {
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.8rem;
+    }
+
+    .section p {
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.1rem;
+    }
+
+    .mini-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+    }
+
+    .mini-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .mini-card p {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem 1rem;
+      margin-top: 1rem;
+      list-style: none;
+    }
+
+    .list li {
+      color: var(--text-muted);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .steps {
+      counter-reset: steps;
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: steps;
+      display: grid;
+      grid-template-columns: 2.25rem minmax(0, 1fr);
+      gap: 0.8rem;
+      align-items: start;
+      color: var(--text-muted);
+    }
+
+    .steps li::before {
+      content: counter(steps);
+      width: 2.25rem;
+      height: 2.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .faq {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.1rem;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    details p {
+      margin-top: 0.7rem;
+      margin-bottom: 0;
+    }
+
+    .final-cta {
+      text-align: center;
+      background: linear-gradient(145deg, rgba(34, 211, 238, 0.16), rgba(24, 24, 28, 0.9));
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 760px) {
+      .page { padding: 1.25rem 1rem 3rem; }
+      .site-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 2.75rem;
+      }
+      .hero,
+      .grid,
+      .list { grid-template-columns: 1fr; }
+      .section { padding: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="../../">Random Mini Apps</a>
+      <a href="https://apps.apple.com/us/app/msgsecret/id958618403" target="_blank" rel="noopener">Download on the App Store</a>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Message encoding utility</p>
+          <h1>MsgSecret: Encode and Decode Private Messages on iPhone</h1>
+          <p class="hero-lede">MsgSecret lets you encode messages on device before sharing them through email, SMS, chat or social apps.</p>
+          <p class="hero-copy">Choose a cipher setup, transform your text, copy the ciphertext and decode incoming messages with the same settings.</p>
+          <div class="cta-row">
+            <a class="cta-btn" href="https://apps.apple.com/us/app/msgsecret/id958618403" target="_blank" rel="noopener">Download MsgSecret on the App Store</a>
+            <a class="secondary-link" href="#faq">Read the FAQ</a>
+          </div>
+        </div>
+        <aside class="app-visual" aria-label="MsgSecret app summary">
+          <img src="../../msgsecret-icon.png" alt="MsgSecret app icon">
+          <strong>MsgSecret</strong>
+          <span>Hide messages from providers.</span>
+        </aside>
+      </section>
+
+      <section class="section" aria-labelledby="summary-title">
+        <h2 id="summary-title">What MsgSecret does</h2>
+        <p>MsgSecret helps keep the meaning of your messages out of plain form before the text leaves your device. You set up your cipher, encrypt on device and share ciphertext through any app or pasteboard.</p><p>Separate plaintext and ciphertext fields make it easier to switch between encoding and decoding without overwriting your last step.</p>
+      </section>
+
+      <section class="section" aria-labelledby="audience-title">
+        <h2 id="audience-title">Who is MsgSecret for?</h2>
+        <p>MsgSecret is for people who want a simple cipher-based way to encode and decode text.</p>
+        <ul class="list">
+          <li>People sharing encoded messages</li>
+          <li>Users who want classic cipher tools</li>
+          <li>Students learning about ciphers</li>
+          <li>People sending ciphertext through messaging apps</li>
+          <li>Users who want a focused encode/decode utility</li>
+          <li>iPhone users who prefer on-device text transformation</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="features-title">
+        <h2 id="features-title">Key features</h2>
+        <div class="grid">
+          <article class="mini-card">
+            <h3>Encode and decode text</h3>
+            <p>Transform plaintext into ciphertext and decode incoming text in one focused app.</p>
+          </article>
+          <article class="mini-card">
+            <h3>Multiple classic ciphers</h3>
+            <p>Choose from different methods with explanations so setup stays straightforward.</p>
+          </article>
+          <article class="mini-card">
+            <h3>Share anywhere</h3>
+            <p>Copy ciphertext to email, SMS, WhatsApp, social apps or any text field.</p>
+          </article>
+          <article class="mini-card">
+            <h3>Tutorial and cipher reference</h3>
+            <p>A built-in tutorial and About ciphers section help users get started.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="how-title">
+        <h2 id="how-title">How MsgSecret works</h2>
+        <ol class="steps">
+          <li>Choose whether to encrypt or decrypt.</li>
+          <li>Enter your text and cipher settings.</li>
+          <li>Run the transformation on device.</li>
+          <li>Copy the result into email, SMS, chat or social apps.</li>
+          <li>Decode incoming ciphertext with MsgSecret and the same settings.</li>
+        </ol>
+      </section>
+
+      <section class="section" aria-labelledby="practice-title">
+        <h2 id="practice-title">Useful for</h2>
+        <p>MsgSecret supports everyday text encoding and cipher learning use cases.</p>
+        <ul class="list">
+          <li>Encoding messages</li>
+          <li>Decoding incoming ciphertext</li>
+          <li>Classic cipher exploration</li>
+          <li>Copy and paste workflows</li>
+          <li>Email and SMS sharing</li>
+          <li>Chat and social app sharing</li>
+          <li>Tutorial-guided setup</li>
+          <li>On-device text transformation</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="benefits-title">
+        <h2 id="benefits-title">Why use MsgSecret?</h2>
+        <p>MsgSecret reduces what service providers and platforms can infer from message text alone because they carry ciphertext instead of the original wording.</p><p>It is a cipher utility, not a guarantee of military-grade or end-to-end security. Use it for privacy-minded encoding and learning, not for high-risk secrets.</p>
+      </section>
+
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Frequently Asked Questions</h2>
+        <div class="faq">
+          <details>
+            <summary>What is MsgSecret?</summary>
+            <p>MsgSecret is an app for encoding and decoding messages with classic cipher methods.</p>
+          </details>
+          <details>
+            <summary>Can I send encoded text through other apps?</summary>
+            <p>Yes. You can copy ciphertext from MsgSecret and paste it into email, SMS, chat or social apps.</p>
+          </details>
+          <details>
+            <summary>Does the recipient need MsgSecret?</summary>
+            <p>To decode the message easily, the recipient needs MsgSecret and the same cipher settings.</p>
+          </details>
+          <details>
+            <summary>Does MsgSecret encrypt on device?</summary>
+            <p>Yes. The text transformation happens on device.</p>
+          </details>
+          <details>
+            <summary>Is MsgSecret free?</summary>
+            <p>Yes. MsgSecret is free to use.</p>
+          </details>
+          <details>
+            <summary>Is MsgSecret a replacement for secure messaging?</summary>
+            <p>No. It is a cipher and encoding utility, not a full secure messaging system.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="disclaimer-title">
+        <h2 id="disclaimer-title">Important notes</h2>
+        <p>MsgSecret is a text encoding and cipher utility. It should not be treated as a replacement for audited secure messaging or professional security tools.</p><p>Recipients need the correct method and settings to decode the text.</p>
+      </section>
+
+      <section class="section final-cta" aria-labelledby="download-title">
+        <h2 id="download-title">Download MsgSecret</h2>
+        <p>MsgSecret is available on the App Store for iPhone.</p>
+        <div class="cta-row" style="justify-content: center;">
+          <a class="cta-btn" href="https://apps.apple.com/us/app/msgsecret/id958618403" target="_blank" rel="noopener">Download MsgSecret on the App Store</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><a href="../../privacy.html">Privacy Policy</a> · <a href="../../">All Apps</a> · Built by Random Mini Apps</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lighting Check - Measure Light Intensity with Your iPhone Camera</title>
+  <meta name="description" content="Lighting Check uses your iPhone camera to estimate light intensity in lux, compare readings with standards, and review averages, samples and charts.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://randomminiapps.github.io/apps/lighting-check/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Lighting Check",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "iOS",
+  "description": "Lighting Check uses your iPhone camera to estimate light intensity in lux, compare readings with standards, and review averages, samples and charts.",
+  "url": "https://randomminiapps.github.io/apps/lighting-check/",
+  "downloadUrl": "https://apps.apple.com/us/app/lighting-check/id1317618609",
+  "image": "https://randomminiapps.github.io/lighting-check-icon.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Random Mini Apps",
+    "url": "https://randomminiapps.github.io/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP",
+    "availability": "https://schema.org/InStock",
+    "url": "https://apps.apple.com/us/app/lighting-check/id1317618609"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Lighting Check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lighting Check is an app that estimates light intensity in lux using your device camera."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I measure light with Lighting Check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Point the camera at the area, tap Start and hold the device steady during the measurement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Lighting Check use the rear camera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The rear camera is used for best accuracy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the readings as accurate as a professional lux meter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Readings depend on your device camera and should be treated as estimates, not certified measurements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Lighting Check compare readings with standards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It includes standards for different locations so you can compare each area against target lux values."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Lighting Check free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It is free to download with in-app purchases."
+      }
+    }
+  ]
+}
+  </script>
+  <style>
+    :root {
+      --bg: #0f0f12;
+      --surface: #18181c;
+      --surface-hover: #222228;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --accent: #22d3ee;
+      --accent-dim: rgba(34, 211, 238, 0.15);
+      --border: #27272a;
+      --radius: 18px;
+      --radius-sm: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.12), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 4rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .site-nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .site-nav a:hover { text-decoration: underline; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.6rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-lede {
+      color: var(--text);
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      max-width: 720px;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-copy {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.1rem;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 700;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .cta-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .product-hunt-btn {
+      background: rgb(255, 97, 84);
+      color: #fff;
+    }
+
+    .secondary-link {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .secondary-link:hover { text-decoration: underline; }
+
+    .app-visual {
+      background: linear-gradient(145deg, rgba(34, 211, 238, 0.18), rgba(24, 24, 28, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: rgba(0, 0, 0, 0.25) 0 20px 60px;
+      text-align: center;
+    }
+
+    .app-visual img {
+      width: min(220px, 60vw);
+      height: min(220px, 60vw);
+      border-radius: 48px;
+      display: block;
+      margin: 0 auto 1rem;
+      box-shadow: rgba(0, 0, 0, 0.35) 0 18px 45px;
+      object-fit: cover;
+    }
+
+    .app-visual strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .app-visual span {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .section {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: rgba(24, 24, 28, 0.82);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .section h2 {
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.8rem;
+    }
+
+    .section p {
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.1rem;
+    }
+
+    .mini-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+    }
+
+    .mini-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .mini-card p {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem 1rem;
+      margin-top: 1rem;
+      list-style: none;
+    }
+
+    .list li {
+      color: var(--text-muted);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .steps {
+      counter-reset: steps;
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: steps;
+      display: grid;
+      grid-template-columns: 2.25rem minmax(0, 1fr);
+      gap: 0.8rem;
+      align-items: start;
+      color: var(--text-muted);
+    }
+
+    .steps li::before {
+      content: counter(steps);
+      width: 2.25rem;
+      height: 2.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .faq {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.1rem;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    details p {
+      margin-top: 0.7rem;
+      margin-bottom: 0;
+    }
+
+    .final-cta {
+      text-align: center;
+      background: linear-gradient(145deg, rgba(34, 211, 238, 0.16), rgba(24, 24, 28, 0.9));
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 760px) {
+      .page { padding: 1.25rem 1rem 3rem; }
+      .site-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 2.75rem;
+      }
+      .hero,
+      .grid,
+      .list { grid-template-columns: 1fr; }
+      .section { padding: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="../../">Random Mini Apps</a>
+      <a href="https://apps.apple.com/us/app/lighting-check/id1317618609" target="_blank" rel="noopener">Download on the App Store</a>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Light measurement utility</p>
+          <h1>Lighting Check: Measure Light Intensity with Your iPhone Camera</h1>
+          <p class="hero-lede">Lighting Check helps you estimate light levels in a space using your iPhone camera and compare readings with useful standards.</p>
+          <p class="hero-copy">Point the camera at the area, run a measurement, and review average lux, samples, charts and environment guidance.</p>
+          <div class="cta-row">
+            <a class="cta-btn" href="https://apps.apple.com/us/app/lighting-check/id1317618609" target="_blank" rel="noopener">Download Lighting Check on the App Store</a>
+            <a class="secondary-link" href="#faq">Read the FAQ</a>
+          </div>
+        </div>
+        <aside class="app-visual" aria-label="Lighting Check app summary">
+          <img src="../../lighting-check-icon.png" alt="Lighting Check app icon">
+          <strong>Lighting Check</strong>
+          <span>Check light intensity in any space.</span>
+        </aside>
+      </section>
+
+      <section class="section" aria-labelledby="summary-title">
+        <h2 id="summary-title">What Lighting Check does</h2>
+        <p>Lighting Check measures approximate light level in lux using your device camera. It is designed to help you understand whether a space is bright enough for common settings.</p><p>The app includes environment standards for different locations, including cattle farm contexts, so readings can be compared with a target range.</p>
+      </section>
+
+      <section class="section" aria-labelledby="audience-title">
+        <h2 id="audience-title">Who is Lighting Check for?</h2>
+        <p>Lighting Check is for people who want a quick, camera-based light level estimate.</p>
+        <ul class="list">
+          <li>People checking room lighting</li>
+          <li>Farm and cattle housing users</li>
+          <li>Workplace or facility checks</li>
+          <li>Students learning about light levels</li>
+          <li>People comparing spaces against lux standards</li>
+          <li>iPhone and iPad users who need a simple light measurement tool</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="features-title">
+        <h2 id="features-title">Key features</h2>
+        <div class="grid">
+          <article class="mini-card">
+            <h3>Camera-based lux estimate</h3>
+            <p>Use your device camera to sample light and estimate lux.</p>
+          </article>
+          <article class="mini-card">
+            <h3>Environment standards</h3>
+            <p>Compare readings against presets and target lux values.</p>
+          </article>
+          <article class="mini-card">
+            <h3>Measurement review</h3>
+            <p>See average lux, sample details and charts after a run.</p>
+          </article>
+          <article class="mini-card">
+            <h3>Guided measurement flow</h3>
+            <p>Tutorial copy explains how to point, start, hold steady and review results.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="how-title">
+        <h2 id="how-title">How Lighting Check works</h2>
+        <ol class="steps">
+          <li>Choose the environment or location you want to compare against.</li>
+          <li>Point the rear camera at the area you want to measure.</li>
+          <li>Tap Start and hold the device steady during sampling.</li>
+          <li>Review the average lux, verdict, samples and chart.</li>
+          <li>Measure again if the lighting changes or you want another comparison.</li>
+        </ol>
+      </section>
+
+      <section class="section" aria-labelledby="practice-title">
+        <h2 id="practice-title">Useful for</h2>
+        <p>Lighting Check supports practical light checks across different spaces.</p>
+        <ul class="list">
+          <li>Room light estimates</li>
+          <li>Farm location checks</li>
+          <li>Cattle housing lighting standards</li>
+          <li>Average lux measurement</li>
+          <li>Sample chart review</li>
+          <li>Target lux comparison</li>
+          <li>Quick before-and-after checks</li>
+          <li>Learning about light intensity</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="benefits-title">
+        <h2 id="benefits-title">Why use Lighting Check?</h2>
+        <p>Lighting Check gives a quick way to estimate lighting without dedicated hardware, which can be useful for informal checks and comparisons.</p><p>Camera-based readings depend on device camera quality and conditions. Newer iPhones typically provide more consistent results.</p>
+      </section>
+
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Frequently Asked Questions</h2>
+        <div class="faq">
+          <details>
+            <summary>What is Lighting Check?</summary>
+            <p>Lighting Check is an app that estimates light intensity in lux using your device camera.</p>
+          </details>
+          <details>
+            <summary>How do I measure light with Lighting Check?</summary>
+            <p>Point the camera at the area, tap Start and hold the device steady during the measurement.</p>
+          </details>
+          <details>
+            <summary>Does Lighting Check use the rear camera?</summary>
+            <p>Yes. The rear camera is used for best accuracy.</p>
+          </details>
+          <details>
+            <summary>Are the readings as accurate as a professional lux meter?</summary>
+            <p>No. Readings depend on your device camera and should be treated as estimates, not certified measurements.</p>
+          </details>
+          <details>
+            <summary>Can Lighting Check compare readings with standards?</summary>
+            <p>Yes. It includes standards for different locations so you can compare each area against target lux values.</p>
+          </details>
+          <details>
+            <summary>Is Lighting Check free?</summary>
+            <p>Yes. It is free to download with in-app purchases.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="disclaimer-title">
+        <h2 id="disclaimer-title">Important notes</h2>
+        <p>Lighting Check provides camera-based estimates and is not a replacement for calibrated professional measurement equipment.</p><p>Accuracy depends on device hardware, camera exposure, lighting conditions and how steadily the device is held.</p>
+      </section>
+
+      <section class="section final-cta" aria-labelledby="download-title">
+        <h2 id="download-title">Download Lighting Check</h2>
+        <p>Lighting Check is available on the App Store for iPhone and iPad.</p>
+        <div class="cta-row" style="justify-content: center;">
+          <a class="cta-btn" href="https://apps.apple.com/us/app/lighting-check/id1317618609" target="_blank" rel="noopener">Download Lighting Check on the App Store</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><a href="../../privacy.html">Privacy Policy</a> · <a href="../../">All Apps</a> · Built by Random Mini Apps</p>
+    </footer>
+  </div>
+</body>
+</html>

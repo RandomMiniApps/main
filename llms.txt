@@ -4,16 +4,31 @@ Random Mini Apps publishes focused apps for Apple devices, including educational
 
 ## Apps
 
+- [Car HUD Display](https://randomminiapps.github.io/apps/car-hud-display/): iPhone heads-up display app with GPS speed, trip widgets, mirror mode and smart brightness.
+- [ClinSpeak OET](https://randomminiapps.github.io/apps/clinspeak-oet/): OET-style speaking practice app for nurses with timed clinical role plays, transcript replay and structured feedback.
+- [Keepie Yuppie](https://randomminiapps.github.io/apps/keepie-yuppie/): physics-based ball juggling game with 99 levels, weather effects, obstacles, survival mode and Game Center.
+- [Lighting Check](https://randomminiapps.github.io/apps/lighting-check/): camera-based light intensity app for estimating lux and comparing readings with location standards.
 - [MedViva Coach](https://randomminiapps.github.io/apps/medviva-coach/): AI mock interview practice app for A-level students and UK medicine applicants preparing for medical school interviews.
+- [MsgSecret](https://randomminiapps.github.io/apps/msgsecret/): message encoding and decoding app for sharing ciphertext through email, SMS, chat and social apps.
+- [Natural Text](https://randomminiapps.github.io/apps/natural-text/): secret-key text transformation app that encrypts messages into natural-looking text.
 
 ## Important pages
 
+- [Car HUD Display App Page](https://randomminiapps.github.io/apps/car-hud-display/)
+- [ClinSpeak OET App Page](https://randomminiapps.github.io/apps/clinspeak-oet/)
+- [Keepie Yuppie App Page](https://randomminiapps.github.io/apps/keepie-yuppie/)
+- [Lighting Check App Page](https://randomminiapps.github.io/apps/lighting-check/)
 - [MedViva Coach App Page](https://randomminiapps.github.io/apps/medviva-coach/)
-- [App Store Listing](https://apps.apple.com/us/app/medviva-coach/id6766191800)
-- [Product Hunt Listing](https://www.producthunt.com/products/medviva-coach)
+- [MsgSecret App Page](https://randomminiapps.github.io/apps/msgsecret/)
+- [Natural Text App Page](https://randomminiapps.github.io/apps/natural-text/)
+- [MedViva Coach App Store Listing](https://apps.apple.com/us/app/medviva-coach/id6766191800)
+- [MedViva Coach Product Hunt Listing](https://www.producthunt.com/products/medviva-coach)
+- [ClinSpeak OET Product Hunt Listing](https://www.producthunt.com/products/clinspeakoet)
 - [Privacy Policy](https://randomminiapps.github.io/privacy.html)
 - [All Apps](https://randomminiapps.github.io/)
 
 ## Notes
 
 MedViva Coach is an educational practice tool and is not affiliated with UCAS, any medical school, the NHS, or any official admissions body. It does not guarantee interview invitations, offers, or admission outcomes.
+
+ClinSpeak OET is an independent preparation tool and is not endorsed by or affiliated with the official OET test. Its clinical scenarios are fictional practice examples and are not medical advice.
