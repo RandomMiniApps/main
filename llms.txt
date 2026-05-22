@@ -4,6 +4,7 @@ Random Mini Apps publishes focused apps for Apple devices, including educational
 
 ## Apps
 
+- [BoomColor](https://randomminiapps.github.io/apps/coloring-book/): relaxing coloring book app with 700+ pages, tap-to-fill painting, creative effects, daily challenges and photo imports for iPhone and iPad.
 - [Car HUD Display](https://randomminiapps.github.io/apps/car-hud-display/): iPhone heads-up display app with GPS speed, trip widgets, mirror mode and smart brightness.
 - [ClinSpeak OET](https://randomminiapps.github.io/apps/clinspeak-oet/): OET-style speaking practice app for nurses with timed clinical role plays, transcript replay and structured feedback.
 - [Keepie Yuppie](https://randomminiapps.github.io/apps/keepie-yuppie/): physics-based ball juggling game with 99 levels, weather effects, obstacles, survival mode and Game Center.
@@ -15,6 +16,7 @@ Random Mini Apps publishes focused apps for Apple devices, including educational
 
 ## Important pages
 
+- [BoomColor App Page](https://randomminiapps.github.io/apps/coloring-book/)
 - [Car HUD Display App Page](https://randomminiapps.github.io/apps/car-hud-display/)
 - [ClinSpeak OET App Page](https://randomminiapps.github.io/apps/clinspeak-oet/)
 - [Keepie Yuppie App Page](https://randomminiapps.github.io/apps/keepie-yuppie/)
