@@ -36,7 +36,7 @@
     }
 
     .page {
-      max-width: 960px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 3rem 1.5rem 4rem;
     }
@@ -75,32 +75,36 @@
 
     .apps {
       display: grid;
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 0.875rem;
     }
 
     .app-card {
       display: flex;
-      align-items: center;
-      gap: 1.25rem;
+      flex-direction: column;
+      align-items: stretch;
+      height: 100%;
+      min-height: 0;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-sm);
+      padding: 1rem;
       text-decoration: none;
       color: inherit;
-      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
     }
 
     .app-card:hover {
       background: var(--surface-hover);
       border-color: var(--accent);
       transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
     .app-icon {
-      width: 72px;
-      height: 72px;
-      min-width: 72px;
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 0.625rem;
       border-radius: var(--radius-sm);
       background: var(--accent-dim);
       display: flex;
@@ -108,6 +112,7 @@
       justify-content: center;
       font-size: 2rem;
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     .app-icon img {
@@ -119,34 +124,33 @@
     .app-body {
       flex: 1;
       min-width: 0;
+      text-align: center;
     }
 
     .app-name {
       font-weight: 600;
-      font-size: 1.2rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .app-desc {
-      color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 0.75rem;
+      line-height: 1.25;
+      margin-bottom: 0.35rem;
     }
 
     .app-meta {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
+      font-size: 0.65rem;
+      line-height: 1.4;
       color: var(--text-muted);
     }
 
     .app-cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.9rem;
+      justify-content: center;
+      gap: 0.35rem;
+      font-size: 0.8125rem;
       font-weight: 500;
       color: var(--accent);
-      white-space: nowrap;
+      text-decoration: none;
+      padding: 0.2rem 0;
     }
 
     .app-cta::after {
@@ -155,16 +159,20 @@
 
     .app-card--coming-soon {
       cursor: default;
-      pointer-events: none;
     }
 
     .app-card--coming-soon:hover {
       transform: none;
+      box-shadow: none;
       border-color: var(--border);
+      background: var(--surface);
     }
 
     .app-cta--soon {
       color: var(--text-muted);
+      text-align: center;
+      margin-top: auto;
+      padding-top: 0.75rem;
     }
 
     .app-cta--soon::after {
@@ -195,20 +203,25 @@
     .app-card__ctas {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      gap: 0.625rem;
+      align-items: stretch;
+      gap: 0.4rem;
       flex-shrink: 0;
+      width: 100%;
+      margin-top: 0.75rem;
+      padding-top: 0.625rem;
+      border-top: 1px solid var(--border);
     }
 
     .app-card__cta-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 16px;
+      padding: 0.45rem 0.5rem;
       border-radius: 8px;
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      white-space: nowrap;
+      line-height: 1.25;
+      text-align: center;
       text-decoration: none;
       transition: opacity 0.15s, transform 0.15s;
     }
@@ -223,23 +236,17 @@
       color: var(--bg);
     }
 
-    .product-hunt-btn {
-      background: rgb(255, 97, 84);
-      color: #fff;
-    }
-
-    @media (max-width: 560px) {
-      .app-card {
-        flex-direction: column;
-        text-align: center;
+    @media (max-width: 519px) {
+      .page {
+        padding: 2rem 1rem 3rem;
       }
 
-      .app-cta {
-        justify-content: center;
+      header {
+        margin-bottom: 2.5rem;
       }
 
-      .app-card__ctas {
-        align-items: center;
+      .apps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
   </style>
@@ -254,7 +261,7 @@
       <p class="tagline">Handcrafted, individually perfected apps for your Apple devices.</p>
     </header>
 
-    <section class="apps">
+    <section class="apps" aria-label="Apps">
       <!-- Apps listed in alphabetical order by name. -->
       <div class="app-card">
         <div class="app-icon">
@@ -262,7 +269,6 @@
         </div>
         <div class="app-body">
           <div class="app-name">Car HUD Display</div>
-          <p class="app-desc">Turn your iPhone into a professional heads-up display. Real-time GPS speed, 12 widgets (clock, temperature, compass, trip distance, average and max speed, and more), HUD mirror mode for your windshield, and smart brightness. Imperial and metric units. iPhone only.</p>
           <div class="app-meta">iPhone · $9.99</div>
         </div>
         <div class="app-card__ctas">
@@ -277,12 +283,10 @@
         </div>
         <div class="app-body">
           <div class="app-name">ClinSpeak OET</div>
-          <p class="app-desc">OET-style speaking practice for nurses: realistic clinical role plays, timed preparation and recording, transcript replay, and structured feedback on clarity, organisation, empathy, and language. Free to download; unlock the full scenario library and premium features with a subscription. Independent preparation tool—not affiliated with the official OET test.</p>
           <div class="app-meta">iPhone, iPad · Free · In‑App Purchases</div>
         </div>
         <div class="app-card__ctas">
           <a class="app-card__cta-btn app-store-btn" href="https://apps.apple.com/us/app/clinspeak-oet/id6763942393" target="_blank" rel="noopener">View on App Store →</a>
-          <a class="app-card__cta-btn product-hunt-btn" href="https://www.producthunt.com/products/clinspeakoet?embed=true&amp;utm_source=embed&amp;utm_medium=post_embed" target="_blank" rel="noopener">Check it out on Product Hunt →</a>
           <a class="app-cta" href="apps/clinspeak-oet/">Learn more</a>
         </div>
       </div>
@@ -294,7 +298,6 @@
         </div>
         <div class="app-body">
           <div class="app-name">Daily Bias</div>
-          <p class="app-desc">A calm daily ritual for better decisions: learn one cognitive bias per day with a short explanation, a relatable example, and a practical reflection prompt. Free to download, with a one-time purchase to unlock the full bias library and premium features. Built for a wide range of Apple devices.</p>
           <div class="app-meta">iPhone, iPad, Apple Watch, Apple TV · Free · One-Time Purchase</div>
         </div>
         <span class="app-cta app-cta--soon">Coming soon on the App Store</span>
@@ -306,7 +309,6 @@
         </div>
         <div class="app-body">
           <div class="app-name">Keepie Yuppie</div>
-          <p class="app-desc">99 levels of ball juggling. Tap to keep the ball airborne with physics-based gameplay, dynamic weather (wind, rain, snow, storm), and obstacles. Kick challenges, survival mode, and target practice. Game Center, regenerating lives, and a Premium option for unlimited lives and no ads.</p>
           <div class="app-meta">iPhone, iPad · Free · In‑App Purchases</div>
         </div>
         <div class="app-card__ctas">
@@ -321,7 +323,6 @@
         </div>
         <div class="app-body">
           <div class="app-name">Lighting Check</div>
-          <p class="app-desc">Check the light intensity in any space using your iPhone’s camera. Correct lighting is crucial for many settings—including cattle farms, where this app provides standards for different locations so you can see how each area compares. Uses the rear camera only for best accuracy; readings depend on your device’s camera quality, so newer iPhones typically give more accurate results.</p>
           <div class="app-meta">iPhone, iPad · Free · In‑App Purchases</div>
         </div>
         <div class="app-card__ctas">
@@ -336,12 +337,10 @@
         </div>
         <div class="app-body">
           <div class="app-name">MedViva Coach</div>
-          <p class="app-desc">Practice medicine admissions–style interviews on your iPhone or iPad: tailored questions, intelligent follow-ups, optional between-answer coaching, and an end-of-session feedback report. Free to download with a subscription to unlock the full interview experience.</p>
           <div class="app-meta">iPhone, iPad · Free · Subscription</div>
         </div>
         <div class="app-card__ctas">
           <a class="app-card__cta-btn app-store-btn" href="https://apps.apple.com/us/app/medviva-coach/id6766191800" target="_blank" rel="noopener">View on App Store →</a>
-          <a class="app-card__cta-btn product-hunt-btn" href="https://www.producthunt.com/products/medviva-coach?embed=true&amp;utm_source=embed&amp;utm_medium=post_embed" target="_blank" rel="noopener">Check it out on Product Hunt →</a>
           <a class="app-cta" href="apps/medviva-coach/">Learn more</a>
         </div>
       </div>
@@ -352,12 +351,25 @@
         </div>
         <div class="app-body">
           <div class="app-name">MsgSecret</div>
-          <p class="app-desc">Encode and decode messages with your own cipher setup—hide what you send from curious eyes. Share ciphered text by email, SMS, Facebook, Twitter, WhatsApp, and more. Save your cipher method and shake your iPhone for a quick encode/decode shortcut. Passcode or Touch ID protection.</p>
           <div class="app-meta">iPhone · Free</div>
         </div>
         <div class="app-card__ctas">
           <a class="app-card__cta-btn app-store-btn" href="https://apps.apple.com/us/app/msgsecret/id958618403" target="_blank" rel="noopener">View on App Store →</a>
           <a class="app-cta" href="apps/msgsecret/">Learn more</a>
+        </div>
+      </div>
+
+      <div class="app-card app-card--coming-soon" aria-label="NMC OSCE AI Coach">
+        <div class="app-icon">
+          <img src="nmc-osce-coach-icon.png" alt="NMC OSCE AI Coach icon">
+        </div>
+        <div class="app-body">
+          <div class="app-name">NMC OSCE AI Coach</div>
+          <div class="app-meta">iPhone, iPad · Free · In‑App Purchases</div>
+        </div>
+        <div class="app-card__ctas">
+          <span class="app-cta app-cta--soon">Coming soon on the App Store</span>
+          <a class="app-cta" href="apps/nmc-osce-coach/">Learn more</a>
         </div>
       </div>
 
@@ -367,7 +379,6 @@
         </div>
         <div class="app-body">
           <div class="app-name">Natural Text</div>
-          <p class="app-desc">Encrypt your text to natural text with your secret key—almost impossible to tell if it’s broken. Use in email, SMS, WhatsApp, Telegram and more. Supports 9 languages. Free with optional in‑app purchase for unlimited characters and no ads.</p>
           <div class="app-meta">iPhone, iPad · Free · In‑App Purchases</div>
         </div>
         <div class="app-card__ctas">

@@ -10,6 +10,7 @@ Random Mini Apps publishes focused apps for Apple devices, including educational
 - [Lighting Check](https://randomminiapps.github.io/apps/lighting-check/): camera-based light intensity app for estimating lux and comparing readings with location standards.
 - [MedViva Coach](https://randomminiapps.github.io/apps/medviva-coach/): AI mock interview practice app for A-level students and UK medicine applicants preparing for medical school interviews.
 - [MsgSecret](https://randomminiapps.github.io/apps/msgsecret/): message encoding and decoding app for sharing ciphertext through email, SMS, chat and social apps.
+- [NMC OSCE AI Coach](https://randomminiapps.github.io/apps/nmc-osce-coach/): OSCE-style voice practice for UK adult nursing students with timed stations, AI patient conversations, checklist feedback and exam plans.
 - [Natural Text](https://randomminiapps.github.io/apps/natural-text/): secret-key text transformation app that encrypts messages into natural-looking text.
 
 ## Important pages
@@ -20,6 +21,7 @@ Random Mini Apps publishes focused apps for Apple devices, including educational
 - [Lighting Check App Page](https://randomminiapps.github.io/apps/lighting-check/)
 - [MedViva Coach App Page](https://randomminiapps.github.io/apps/medviva-coach/)
 - [MsgSecret App Page](https://randomminiapps.github.io/apps/msgsecret/)
+- [NMC OSCE AI Coach App Page](https://randomminiapps.github.io/apps/nmc-osce-coach/)
 - [Natural Text App Page](https://randomminiapps.github.io/apps/natural-text/)
 - [MedViva Coach App Store Listing](https://apps.apple.com/us/app/medviva-coach/id6766191800)
 - [MedViva Coach Product Hunt Listing](https://www.producthunt.com/products/medviva-coach)
@@ -32,3 +34,5 @@ Random Mini Apps publishes focused apps for Apple devices, including educational
 MedViva Coach is an educational practice tool and is not affiliated with UCAS, any medical school, the NHS, or any official admissions body. It does not guarantee interview invitations, offers, or admission outcomes.
 
 ClinSpeak OET is an independent preparation tool and is not endorsed by or affiliated with the official OET test. Its clinical scenarios are fictional practice examples and are not medical advice.
+
+NMC OSCE AI Coach is an independent educational practice tool and is not affiliated with, endorsed by, or approved by the Nursing and Midwifery Council. Scenarios and feedback are for exam communication practice only and are not clinical guidance.
